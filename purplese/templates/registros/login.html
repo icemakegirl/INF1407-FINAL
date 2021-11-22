@@ -1,0 +1,16 @@
+{% extends 'registros/base.html'%}
+{% block titulo%} Login do Usuario{%endblock%}
+<!--Conteudo da pagina-->
+{%block conteudo%}
+<h2>Login do usuario</h2>
+<p>
+    Atenção: esse sie NÃO é seguro, não usa HTTPS
+</p>
+<form method="POST">
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type='submit'>
+</form>
+Esqueceu a Senha? <a href="">Click aqui para criar uma nova</a>
+{% endblock%}

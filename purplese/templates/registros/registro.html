@@ -1,0 +1,16 @@
+{% extends 'registros/base.html'%}
+{% block titulo%} HomePage de seguranca{%endblock%}
+<!--Conteudo da pagina-->
+{%block conteudo%}
+<h2>Registro de usuario</h2>
+<p>
+   Entre com seu usuario
+</p>
+<form method="post">
+    {%csrf_token%}
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Confirmar Registro">
+</form>
+{% endblock%}

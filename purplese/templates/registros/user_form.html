@@ -1,0 +1,13 @@
+{% extends 'registros/base.html'%}
+{% block titulo%} Registro do Usuario{%endblock%}
+<!--Conteudo da pagina-->
+{%block conteudo%}
+<h2>Complete seus Dados</h2>
+
+<form method="POST">
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type='submit' value='Atualiza'>
+</form>
+{% endblock%}
