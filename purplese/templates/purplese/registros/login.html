@@ -1,4 +1,4 @@
-{% extends 'registros/base.html'%}
+{% extends 'purplese/registros/base.html'%}
 {% block titulo%} Login do Usuario{%endblock%}
 <!--Conteudo da pagina-->
 {%block conteudo%}
@@ -7,7 +7,9 @@
     Atenção: esse sie NÃO é seguro, não usa HTTPS
 </p>
 <form method="POST">
+    {%csrf_token%}
     <table>
+        
         {{form.as_table}}
     </table>
     <input type='submit'>

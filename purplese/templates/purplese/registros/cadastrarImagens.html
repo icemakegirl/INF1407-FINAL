@@ -1,0 +1,18 @@
+{% extends 'purplese/registros/baseUsuarioHome.html'%}
+{% block titulo%} Login do Usuario{%endblock%}
+<!--Conteudo da pagina-->
+{%block conteudo%}
+<h2>Login do usuario</h2>
+<p>
+    Atenção: esse sie NÃO é seguro, não usa HTTPS
+</p>
+<form method="POST">
+    {%csrf_token%}
+    <table>
+        
+        {{formulario.as_table}}
+    </table>
+    <input type='submit' value='Cadastrar imagem'>
+</form>
+
+{% endblock%}

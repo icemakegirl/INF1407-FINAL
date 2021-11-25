@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+<title> {% block titulo%}{% endblock %}</title>
+    </head>
+    <body>
+        <h1>Site Seguro nem tanto kkkkk</h1>
+        <a href="{% url 'sec-home' %}">Home Page Segura</a>
+        
+        {%if user.is_authenticated%}
+            | <a href="{% url 'sec-logout' %}">Logout</a>
+            | <a href="{% url 'sec-passwordchange' %}">Alterar Senha</a>
+           <!--| <a href="{% url 'sec-completaDados' pk=user.id%}">Terminar Registro</a>--> 
+        {%else%}
+            | <a href="{% url 'sec-login' %}?next={% url 'sec-paginaSecreta' %}">Login</a>
+            | <a href="{% url 'sec-registro' %}?next={% url 'sec-login' %}">Novo Usuario</a>
+        {%endif%}
+        Voce é {% firstof user.username 'visitante'%}
+        {% block conteudo%}{% endblock %}
+    </body>
+</html>

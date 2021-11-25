@@ -1,0 +1,31 @@
+from django.conf.urls import url
+app_name = 'purplese'
+from django.contrib import admin
+from django.contrib.auth.models import *
+from django.views.generic.edit import UpdateView
+from django.urls.base import reverse_lazy
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordResetDoneView, PasswordResetView,PasswordResetConfirmView,PasswordResetCompleteView
+
+from . import views
+
+urlpatterns = [url(r'', views.homeSec.as_view(),name="sec-home"),
+    url(r'^purplese/profile/',views.paginaSecreta,name="sec-paginaSecreta"),
+    url(r'^purplese/registro/',views.registro,name="sec-registro"),
+    url(r'^purplese/login/', LoginView.as_view(template_name='registros/login.html'),name='sec-login'),
+   url(r'^purplese/logout/',LogoutView.as_view(next_page=reverse_lazy('purplese/')),name='sec-logout'),
+    url(r'^purplese/senhaTrocada/',PasswordChangeView.as_view(template_name='registros/password_change_done.html'),name='sec-passwordDone'),
+    url(r'^purplese/trocaSenha/',PasswordChangeView.as_view(template_name='registros/password_change_form.html',success_url=reverse_lazy('sec-passwordDone')),name='sec-passwordchange'),
+    url(r'^purplese/terminaRegistro/<int:pk>/',UpdateView.as_view(template_name='registros/user_form.html',success_url=reverse_lazy('sec-paginaSecreta',
+    model=User,fields=['first_name','last_name','email'])),name='sec-completaDados'),
+    url(r'^purplese/password_reset/', PasswordResetView.as_view(
+ template_name='registros/password_reset_form.html',success_url=reverse_lazy('sec-password_reset_done'),
+ email_template_name='registros/password_reset_email.html',subject_template_name='registros/password_reset_subject.txt',
+ from_email='fale.joanne@gmail.com',), name='password_reset'),
+ url(r'^purplese/password_reset_done/', PasswordResetDoneView.as_view(template_name='registros/password_reset_done.html',
+ ), name='sec-password_reset_done'),
+ url(r'^purplese/password_reset_confirm/<uidb64>/<token>/',
+ PasswordResetConfirmView.as_view(template_name='registros/password_reset_confirm.html',
+ success_url=reverse_lazy('sec-password_reset_complete'),), name='password_reset_confirm'),
+url(r'^purplese/password_reset_complete/', PasswordResetCompleteView.as_view(
+ template_name='registros/password_reset_complete.html'
+ ), name='sec-password_reset_complete'),]
