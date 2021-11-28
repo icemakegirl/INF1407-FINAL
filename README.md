@@ -1,6 +1,8 @@
 # INF1407-FINAL
 Integrante: Joanne Carneiro
 Tranbalho: Individual
-A idei inicial seri criar um site para colecionadores de figurinhas, onde eles podem cadastra-las 
-Chegeui a pensar que no site eles podem realizar as compras dessas figurinhas também, mas nao tenho certeza se vou implementar ainda
+Foi feito um site que os usuários tem o objetivo de compartilhar fanarts e figurinhas entre si.
+Cada usuário só pode excluir as suas, mas outros usuário podem verificar as imagens cadastradas por outros.
+Cada usuário pode visualizar as suas fanarts individualmente
+
  
