@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    <title>Apaga Contato</title>
+</head>
+<body>
+        {% include 'purplese/registros/base.html' %}
+    <h1 class=titulo>Remoção da Imagem {{ pessoa.nome }} </h1>
+    <form method="POST">
+        {% csrf_token %}
+        <span class="titulo">{% firstof user.username 'visitante'%} você Confirma a remoção de {{ pessoa.nome }}?<br></span>
+        <button class=botao1>
+        <a  href="{%url 'list-img' %}"style="text-decoration: none; ">Cancela</a>
+        </button>
+        <input class=botao1 type="submit" value="Remove">
+    </form>
+</body>
+</html>

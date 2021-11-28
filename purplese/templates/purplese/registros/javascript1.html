@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    onload = function () {
+        document.getElementById('id_username').addEventListener('keyup', function (e) {
+            var campoUsername = document.getElementById('id_username');//pega o user name
+            var xmlhttp = new XMLHttpRequest();//faz a requisicao
+            xmlhttp.open("GET", "{% url 'verificaUsername' %}?username=" + encodeURIComponent(campoUsername.value), true);//abre a requisicao omparando se o user passado já existe
+            xmlhttp.onreadystatechange = function () {
+                if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+                    var resposta = JSON.parse(xmlhttp.responseText);
+                    if(resposta.existe) {
+                        campoUsername.style = "border: 3px solid #FF0000";
+                        document.getElementById("registro").disabled = true;//desabilito o botao se for igual
+                        document.getElementById('idMsgErro').replaceChild(document.createTextNode("Usuário já existe"), document.getElementById('idMsgErro').firstChild);
+                    }
+                    else {
+                        campoUsername.style = "border: 3px solid #00FF00";
+                        document.getElementById("registro").disabled = false;
+                        document.getElementById('idMsgErro').replaceChild(document.createTextNode("OK"), document.getElementById('idMsgErro').firstChild);
+                    }
+                }
+            };
+            xmlhttp.send(null);
+        });
+     document.getElementById('id_password').addEventListener('keyup', function (e) {
+            var comp=False;
+            var senha = document.getElementById('id_password1');//pega o user name
+            var senha2 = document.getElementById('id_password2');//pega o user name
+            if(senha==senha2){
+                comp=True;
+            }
+            var xmlhttp = new XMLHttpRequest();//faz a requisicao
+            xmlhttp.open("GET", "{% url 'verificaPassword' %}?senha=" + encodeURIComponent(comp), true);//abre a requisicao omparando se o user passado já existe
+            xmlhttp.onreadystatechange = function () {
+                if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+                    var resposta = JSON.parse(xmlhttp.responseText);
+                    if(resposta.existe) {
+                        senha2.style = "border: 3px solid #FF0000";
+                        document.getElementById('idMsgErro').replaceChild(document.createTextNode("Usuário já existe"), document.getElementById('idMsgErro').firstChild);
+                    }
+                    else {
+                        senha2.style = "border: 3px solid #00FF00";
+                        document.getElementById('idMsgErro').replaceChild(document.createTextNode("OK"), document.getElementById('idMsgErro').firstChild);
+                    }
+                 }
+            };
+        xmlhttp.send(null);
+     });
+    }
+ </script>

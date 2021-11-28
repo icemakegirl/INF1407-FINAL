@@ -2,15 +2,19 @@
 {% block titulo%} HomePage de seguranca{%endblock%}
 <!--Conteudo da pagina-->
 {%block conteudo%}
-<h2>Registro de usuario</h2>
-<p>
-   Entre com seu usuario
-</p>
-<form method="post">
+<h2 class=titulo>Registro de usuario</h2>
+
+{% include 'purplese/registros/javascript1.html' %}
+
+<form class=tabela method="post">
     {%csrf_token%}
-    <table>
-        {{form.as_table}}
-    </table>
-    <input type="submit" value="Confirmar Registro">
+    <div>
+        <table>
+            {{form.as_table}}
+        </table>
+    </div>
+    <input id="registro" type="submit" value="Registrar" class=botao1 >
+      
+    
 </form>
 {% endblock%}

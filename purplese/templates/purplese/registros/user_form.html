@@ -2,14 +2,29 @@
 {% block titulo%} Registro do Usuario{%endblock%}
 <!--Conteudo da pagina-->
 {%block conteudo%}
-<h2>Complete seus Dados</h2>
-
-<form method="POST">
+<h2 class=titulo>Complete seus Dados</h2>
+{% include 'purplese/registros/javascript2.html' %}
+<form class=tabela method="POST">
     {%csrf_token%}
     <table>
         
-        {{form.as_table}}
+        
+        <div>
+            <label>First Name:</label>
+            
+                {{form.first_name}}
+            
+           <label>Last Name:</label>
+        {{form.last_name}}
+       
+       <label>Email:</label>
+                {{form.email}}
+            </div>
+            <div>
+                <input  id="atualiza" class=botao1 type='submit' value='Atualiza'>
+            </div>
     </table>
-    <input type='submit' value='Atualiza'>
+    
+    
 </form>
 {% endblock%}

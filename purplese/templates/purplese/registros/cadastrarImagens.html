@@ -1,18 +1,47 @@
-{% extends 'purplese/registros/baseUsuarioHome.html'%}
-{% block titulo%} Login do Usuario{%endblock%}
-<!--Conteudo da pagina-->
-{%block conteudo%}
-<h2>Login do usuario</h2>
-<p>
-    Atenção: esse sie NÃO é seguro, não usa HTTPS
-</p>
-<form method="POST">
-    {%csrf_token%}
-    <table>
-        
-        {{formulario.as_table}}
-    </table>
-    <input type='submit' value='Cadastrar imagem'>
-</form>
 
-{% endblock%}
+{% include 'purplese/registros/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cadastra Imagens</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+</head>
+<body>
+    <h2 class=titulo>Cadastrar Imagens</h2>
+    <form class=tabela method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table >
+            <div></br>
+                <label>Nome:</label>
+                {{ formulario.nome}}</br>
+            </div>
+            <div></br>
+                <label>Imagem:</label>
+                {{ formulario.imagem}}</br>
+            </div>
+            <div></br>
+                <label>Categoria:</label>
+                {{ formulario.categoria}}</br>
+            </div>
+            <div></br>
+                <label>Genero:</label>
+                {{ formulario.genero}}</br>
+            </div>
+            <div></br>
+                <label>Tag:</label>
+                {{ formulario.tag}}</br>
+            </div>
+            <div></br>
+                <label>Descrição:</label>
+                {{ formulario.descricao}}</br>
+            </div>
+            
+           
+        </table>
+        
+            <input class=botao1 type="submit" value="Cadastrar" class="btn btn-default">
+        
+ </form>
+ 
+</body>
+</html>

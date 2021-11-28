@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title class="titulo">Atualiza Contato</title>
+
+</head>
+<body>
+        {% include 'purplese/registros/base.html' %}
+        <h1>Atualização de contatos</h1>
+        <form class=tabela method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <table >
+                    <div class="form-group">
+                        <label>Nome:</label>
+                        {{ pessoa.nome}}
+                    </div>
+                    <div>
+                        <label>Imagem:</label>
+                        {{ pessoa.imagem}}
+                    </div>
+                    <div>
+                        <label>Categoria:</label>
+                        {{ pessoa.categoria}}
+                    </div>
+                    <div>
+                        <label>Genero:</label>
+                        {{ pessoa.genero}}
+                    </div>
+                    <div>
+                        <label>Tag:</label>
+                        {{ pessoa.tag}}
+                    </div>
+                    <div>
+                        <label>Descrição:</label>
+                        {{ pessoa.descricao}}
+                    </div>
+            
+           
+            <input class=botao1 type="submit" value="Atualiza"></td>
+            
+            </table>
+        </form>
+</body>
+</html>

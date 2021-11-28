@@ -1,0 +1,20 @@
+{% extends 'purplese/registros/base.html'%}
+{% block titulo%} Postadas Recentementes{%endblock%}
+{% load static %}
+{%block conteudo%}
+{% if usuario %}
+<section class=trata_img>{% for pessoa in usuario %}
+
+</br> User: {{ pessoa.user }}</br><img src="/{{pessoa.imagem }}" alt="{{ pessoa.nome }}" style="width:250px"></br><a href="/{{pessoa.imagem }}">{{ pessoa.nome }}</a></br>Categoria: {{ pessoa.categoria }}</br>Genero: {{ pessoa.genero }}</br>Tag: {{ pessoa.tag }}</br> Descricao: {{ pessoa.descricao }}</br> Data de inicio: {{ pessoa.criaca_data |  date:"d/m/y h:m" }}</br> Data da Atualização: {{ pessoa.atualiza_data | date:"d/m/y h:m" }}</br></br>
+ 
+ <a class=botao1 href="{% url 'atualiza-image' pk=pessoa.id%}">Atualizar</a> |
+ <a class=botao1 href="{% url 'apaga-image' pk=pessoa.id%}">Excluir</a>
+ 
+ {% endfor %}
+ {% else %}
+ <tr><th  colspan="5"><div class=titulo>{% firstof user.username 'visitante'%} você ainda não tem imagens postadas</div></th></tr>
+ {% endif %}
+
+</table>
+</section>
+{% endblock%}

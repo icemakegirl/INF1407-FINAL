@@ -2,17 +2,27 @@
 {% block titulo%} Login do Usuario{%endblock%}
 <!--Conteudo da pagina-->
 {%block conteudo%}
-<h2>Login do usuario</h2>
-<p>
-    Atenção: esse sie NÃO é seguro, não usa HTTPS
-</p>
-<form method="POST">
+<h2 class=titulo>Login do usuario</h2>
+
+<form class=tabela method="POST">
     {%csrf_token%}
     <table>
+        <div>
+            <label>Username: </label>
+            {{form.username}}
+        </div>
+        <div>
+            <label>Password: </label>
+            {{form.password}}
+        </div>
         
-        {{form.as_table}}
     </table>
-    <input type='submit'>
+    
+    <div >
+        <input class=botao1 type="submit" value="Logar" >
+    </div>
+    Esqueceu a Senha? <a href="{%url 'password-reset' %}">Click aqui para recuperar</a>
+    
 </form>
-Esqueceu a Senha? <a href="">Click aqui para criar uma nova</a>
+
 {% endblock%}

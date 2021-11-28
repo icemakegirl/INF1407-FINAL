@@ -1,0 +1,31 @@
+{% extends 'purplese/registros/base.html'%}
+{% block titulo%} Postadas Recentementes{%endblock%}
+{%block conteudo%}
+
+           
+                {% if usuario %}
+                <section class=trata_img>{% for pessoa in usuario %}
+                
+            </br> User: {{ pessoa.user }}</br><img src="/{{pessoa.imagem }}" alt="{{ pessoa.nome }}" style="width:250px"></br><a target="_blank" href="/{{pessoa.imagem }}">{{ pessoa.nome }}</a></br>Categoria: {{ pessoa.categoria }}</br>Genero: {{ pessoa.genero }}</br>Tag: {{ pessoa.tag }}</br> Descricao: {{ pessoa.descricao }}</br> Data de inicio: {{ pessoa.criaca_data |  date:"d/m/y h:m" }}</br> Data da Atualização: {{ pessoa.atualiza_data | date:"d/m/y h:m" }}</br></br>
+            {% endfor %}
+            <div class=pagination>
+                <span class="step-links">
+                    {%if usuario.has_previous%}
+                    <a class=botao1 href="?page={{ usuario.previous_page_number}}"><i class=" fas fa-arrow-left"></i>Antes</a>
+                {%endif%}
+                <span class="current">
+                    página {{usuario.number}}  de {{usuario.paginator.num_pages}}
+                </span>
+                {%if usuario.has_next%}
+                <a class=botao1 href="?page={{ usuario.next_page_number}}"><i class=" fas fa-arrow-left"></i>proximo</a>
+            {%endif%}
+                </span>
+            </div>
+                
+                {% else %}
+                >Ainda não tem imagens postadas
+                {% endif %}
+                </section>
+                
+        
+    {% endblock%}

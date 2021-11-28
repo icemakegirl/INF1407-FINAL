@@ -1,0 +1,27 @@
+
+<script type="text/javascript">
+onload = function () {
+    document.getElementById('id_email').addEventListener('keyup', function (e) {
+        var campoEmail = document.getElementById('id_email');//pega o user name
+        var xmlhttp = new XMLHttpRequest();//faz a requisicao
+        xmlhttp.open("GET", "{% url 'verificaEmail' %}?email=" + encodeURIComponent(campoEmail.value), true);//abre a requisicao omparando se o user passado já existe
+        xmlhttp.onreadystatechange = function () {
+            if(xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+                var resposta = JSON.parse(xmlhttp.responseText);
+                if(resposta.existe) {
+                    campoEmail.style = "border: 1px solid #FF0000";
+                    document.getElementById("atualiza").disabled = true;//desabilito o botao se for igual
+                    document.getElementById('idMsgErro').replaceChild(document.createTextNode("Email já cadastrado, verifique se você já não possui um Cadastro"), document.getElementById('idMsgErro').firstChild);
+                }
+                else {
+                    campoEmail.style = "border: 1px solid #00FF00;";
+                    document.getElementById("atualiza").disabled = false;
+                    document.getElementById('idMsgErro').replaceChild(document.createTextNode("OK"), document.getElementById('idMsgErro').firstChild);
+                }
+            }
+        };
+        xmlhttp.send(null);
+    });
+
+}
+</script>
